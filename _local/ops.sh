@@ -1,3 +1,7 @@
+
+#_declare_arduino_device_zero
+_declare_arduino_installation_1.8.5
+
 #Enable search if "vm.img" and related files are missing.
 export ubVirtImageLocal="false"
 

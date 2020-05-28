@@ -8,6 +8,42 @@ Contains all dependencies, including binaries and libraries, to a single directo
 
 Arduino has become a common component of larger industrial systems, most notably 3D printer controllers.
 
+# Fork
+Forked from the "arduinoUbiquitous" project. Specifically provides libraries to compile LulzBot firmware.
+
+Use arduino-1.8.5, as specified by "ops.sh" file.
+
+As documented from the "SORUCES.txt" file from "Marlin-LulzBot-Snapshot".
+
+Source Path:                                            Repository:                                        Version:        License:
+ArduinoAddons/arduino-1.8.5                             https://github.com/arduino/Arduino/                v1.8.5          GPL v2.1 or later/LGPL v2.1
+ArduinoAddons/arduino-1.8.5/libraries/TMC2130Stepper    https://github.com/teemuatlut/TMC2130Stepper       v2.3.0          AGPL v3
+ArduinoAddons/arduino-1.8.5/libraries/U8glib            https://github.com/olikraus/u8glib                 master-f2e0c70  new-bsd
+ArduinoAddons/arduino-1.8.5/libraries/Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel      v1.1.6          GPL v3
+ArduinoAddons/arduino-1.8.5/libraries/LiquidCrystal     https://github.com/arduino-libraries/LiquidCrystal master-a89b4d4  GPL v2.1
+
+The "U8glib" library as provided by the "Marlin-LulzBot-Snapshot" repository, was not apaprently compatible with Arduino IDE. Instead, the latest version from the libraries manager has been installed.
+
+Be aware the "Marlin-LulzBot-Snapshot" files are apparently intended to be compiled by a shell script, which calls a makefile. Apparently, shell script defaults to the system-wide installation of binaries like 'avr-gcc', which may not be appropriate.
+
+
+Alternatively, compiling with Arduino IDE may in some situations (tagged versions output by LulzBot shell script) require some modifications to the source code files, in addition to what would typically be expected for Marlin firmware under "Configuration.h", "Configuration_adv.h", and "Configuration_LulzBot.h".
+
+find . -name "*.h" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+find . -name "*.cpp" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+
+find . -name "*SdBaseFile.h" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+find . -name "*SdBaseFile.cpp" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+
+
+# Fork - Reference
+https://reprap.org/forum/read.php?146,691608
+
+
+# Internal
+NOT intended for end-users. See the "build_firmware_printer_marlin" project.
+
+
 # Usage
 From terminal, launch "_arduino" with existing sketch directory as a parameter.
 
