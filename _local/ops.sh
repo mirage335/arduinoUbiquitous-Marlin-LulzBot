@@ -19,3 +19,12 @@ export ubVirtImageLocal="false"
 # 	cp -a "$scriptAbsoluteFolder"/_anchor "$scriptAbsoluteFolder"/_task_scope_arduinoide_blink
 # }
 
+
+_rewrite_arduinoide() {
+	find . -maxdepth 1 -type f -name "*.h" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+	find . -maxdepth 1 -type f -name "*.cpp" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+
+	find . -maxdepth 1 -type f -name "*SdBaseFile.h" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+	find . -maxdepth 1 -type f -name "*SdBaseFile.cpp" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+}
+
