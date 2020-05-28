@@ -29,14 +29,23 @@ Be aware the "Marlin-LulzBot-Snapshot" files are apparently intended to be compi
 
 Alternatively, compiling with Arduino IDE may in some situations (tagged versions output by LulzBot shell script) require some modifications to the source code files, in addition to what would typically be expected for Marlin firmware under "Configuration.h", "Configuration_adv.h", and "Configuration_LulzBot.h".
 
-find -maxdepth 1 . -name "*.h" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
-find -maxdepth 1 . -name "*.cpp" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+find . -maxdepth 1 -type f -name "*.h" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
+find . -maxdepth 1 -type f -name "*.cpp" -exec sed -i 's/utility\/u8g.h/clib\/u8g.h/g' {} \;
 
-find -maxdepth 1 . -name "*SdBaseFile.h" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
-find -maxdepth 1 . -name "*SdBaseFile.cpp" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+find . -maxdepth 1 -type f -name "*SdBaseFile.h" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
+find . -maxdepth 1 -type f -name "*SdBaseFile.cpp" -exec sed -i 's/fpos_t/fpos_t1/g' {} \;
 
-The "ops.sh" file includes a function to call these commands - _rewrite_arduinoide .
+The "ops.sh" file includes a function to call these commands - '_rewrite_arduinoide' .
 
+# Fork - Certification
+
+## -
+
+* ./compile.sh ; ./_arduino_arduinoide_user ./_lib/_examples/Marlin-TAZ_501_Single_Extruder_v2-AIDE/Marlin/Marlin.ino
+
+* ./compile.sh ; ./_arduino_compile ./_lib/_examples/Marlin-TAZ_501_Single_Extruder_v2-AIDE/Marlin/Marlin.ino
+
+* ./compile.sh ; ./_arduino_upload ./_lib/_examples/Marlin-TAZ_501_Single_Extruder_v2-AIDE/Marlin/Marlin.ino
 
 # Fork - Reference
 https://reprap.org/forum/read.php?146,691608
