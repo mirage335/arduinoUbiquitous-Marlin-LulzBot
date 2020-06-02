@@ -8,6 +8,11 @@ _declare_arduino_installation_1.8.5
 #Enable search if "vm.img" and related files are missing.
 export ubVirtImageLocal="false"
 
+export ub_anchor_autoupgrade="true"
+
+export ub_anchor_specificSoftwareName="Marlin-LulzBot"
+export ub_anchor_user="true"
+
 # # ATTENTION: Add to ops!
 _refresh_anchors_arduino_rewrite() {
 	cp -a "$scriptAbsoluteFolder"/_anchor "$scriptAbsoluteFolder"/_arduino_rewrite

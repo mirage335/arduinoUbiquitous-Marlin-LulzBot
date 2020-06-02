@@ -1,4 +1,4 @@
-board=mega
+board=arduino_zero_native
 boardsmanager.additional.urls=
 browser=mozilla
 build.verbose=true
@@ -82,7 +82,7 @@ serial.port.iserial=(null)
 serial.stopbits=1
 software=ARDUINO
 target_package=arduino
-target_platform=avr
+target_platform=samd
 update.check=false
 update.id=-4695146546634905923
 upload.using=bootloader
