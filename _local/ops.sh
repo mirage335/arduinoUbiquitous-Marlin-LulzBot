@@ -1,6 +1,7 @@
 
 # WARNING: Board type may not be correctly set in arduinoide .
 # WARNING: May not be appropriate for all relevant projects. Intended as sane defaults ONLY.
+# DANGER: Overrides sketch 'ops' !
 _declare_arduino_device_mega2560
 _declare_arduino_installation_1.8.5
 
